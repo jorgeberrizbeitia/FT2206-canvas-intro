@@ -119,11 +119,11 @@ printSomething()
 
 // como hacemos animaciones
 
-let controlAnimation = 0;
+// let controlAnimation = 0;
 let cubeX = 50
 
 function moveCube() {
-  controlAnimation++
+  // controlAnimation++
 
   // 1. limpiar el canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height)
