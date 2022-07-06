@@ -80,3 +80,68 @@ ctx.stroke()
 ctx.fillStyle = "salmon"
 ctx.fill()
 ctx.closePath()
+
+
+// como agregamos imagenes
+
+let img = new Image();
+// el src podría ser externo o interno (recomendado sería interno)
+img.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/34.svg"
+
+
+// drawImage => 3 argumentos o 5 argumentos
+// (imagen, xPos, yPos, ancho, alto)
+ctx.drawImage(img, 300, 360)
+// a veces, tendremos que esperar que la imagen se cargue correctamente, antes de subirla al canvas
+
+// img.addEventListener("load", () => {
+//   // ctx.drawImage(img, 300, 360)
+//   ctx.drawImage(img, 300, 360, 100, 100)
+// })
+
+
+// recursion
+
+let control = 0;
+
+function printSomething() {
+  control = control + 1 // control++
+
+  console.log("Imprimiendo en la consola!")
+
+  if (control < 200) {
+    printSomething()
+  }
+}
+
+printSomething()
+
+
+// como hacemos animaciones
+
+let controlAnimation = 0;
+let cubeX = 50
+
+function moveCube() {
+  controlAnimation++
+
+  // 1. limpiar el canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+  // 2. mover los elementos
+  cubeX = cubeX + 1
+
+  // 3. dibujar los elementos
+  ctx.fillStyle = "black";
+  ctx.fillRect(cubeX, 700, 40, 40)
+
+  // 4. efecto de recursion
+  if (cubeX < 400) {
+    // moveCube()
+    // requestAnimationFrame => ejecuta esto 60 veces cada segundo 60fps
+    requestAnimationFrame(moveCube) // detecta la velocidad de refresque de la pantalla y lo ejecuta de acuerdo
+  }
+
+}
+
+moveCube()
